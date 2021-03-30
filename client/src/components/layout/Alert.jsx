@@ -1,6 +1,6 @@
-import React from 'react'
-import {connect} from "react-redux"
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const Alert = ({ alerts }) =>
   alerts.map((alert) => (
@@ -10,11 +10,11 @@ const Alert = ({ alerts }) =>
   ));
 
 Alert.propTypes = {
-   alerts: PropTypes.array.isRequired, 
-}
+  alerts: PropTypes.array.isRequired
+};
 
-const mapStatetProps = state => ({
-   alerts: state.alert
-})
+const mapStateToProps = (state) => ({
+  alerts: state.alert
+});
 
-export default connect(mapStatetProps)(Alert);
+export default connect(mapStateToProps)(Alert);
