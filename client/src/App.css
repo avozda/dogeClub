@@ -676,3 +676,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .alert-warning {
     background-color: #eed202;
 }
+
+.notFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.notFound h1 {
+    color: var(--color-primary-700);
+    font-size: 84px;
+}

@@ -11,6 +11,7 @@ import AddEducation from "./components/profile-form/AddEducation"
 import Profile from "./components/profile/Profile"
 import Profiles from "./components/profiles/Profiles"
 import Post from "./components/post/Post"
+import NotFound from "./components/pages/NotFound"
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
 //Redux
 import {Provider} from "react-redux"
@@ -47,7 +48,7 @@ const App = () => {
           <PrivateRoute exact path="/edit-profile" component={EditProfile}/>
           <PrivateRoute exact path="/add-education" component={AddEducation}/>
           <PrivateRoute exact path="/add-experience" component={AddExperience}/>
-          
+          <Route component={NotFound}/>
         </Switch>
         </section>
     </Fragment>
