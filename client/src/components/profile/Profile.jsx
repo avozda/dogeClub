@@ -55,20 +55,21 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth,post:{pos
                   }    
              </div>
                   <div className="about-card">
+                  <h2>Educations</h2>
               {profile.education.length > 0 ? (
-                <div>
-                  {profile.education.map((education) => (
+               
+                  profile.education.map((education) => (
                     <ProfileEducation
                       key={education._id}
                       education={education}
                     />
-                  ))}
-                </div>
+                  ))
+                
               ) : (
 
-                <div className="about-card"> <h4>No educations</h4>
+                <h4>No educations</h4>
                 
-                </div>
+          
               )}
                 {
                   auth.isAuthenticated &&

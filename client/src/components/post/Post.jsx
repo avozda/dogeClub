@@ -44,7 +44,9 @@ const Post = ({ getPost, getCurrentProfile, post: { post, loading }, match, prof
                
                
             <div className="comments">
-               {post.comments.map(comment=> <CommentItem key={comment._id} comment={comment} postId={post._id}/>)}
+               {post.comments.length > 0 && (
+                  post.comments.map(comment=> <CommentItem key={comment._id} comment={comment} postId={post._id}/>)
+               )}
             </div>
                </div>
             <div className="column">

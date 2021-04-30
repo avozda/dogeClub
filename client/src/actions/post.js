@@ -151,10 +151,10 @@ export const deleteUpvote = (postId, commentId) => async dispatch => {
             type: UPDATE_UPVOTES,
             payload: { commentId, postId, upvotes: res.data }
         });
-    } catch (error) {
+    } catch (err) {
         dispatch({
             type: POST_ERROR,
-            payload: { msg: error.response.statusText, status: error.response.status }
+            payload: { msg: err.response.statusText, status: err.response.status }
         });
     }
 };
