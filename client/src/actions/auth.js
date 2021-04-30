@@ -7,10 +7,11 @@ import {
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT
+    LOGOUT,
+    CLEAR_PROFILE
 } from './types';
 
-// Load User
+// načíst uživatele
 export const loadUser = () => async dispatch => {
     try {
         const res = await api.get('/auth');
@@ -19,14 +20,14 @@ export const loadUser = () => async dispatch => {
             type: USER_LOADED,
             payload: res.data
         });
-    } catch (err) {
+    } catch (error) {
         dispatch({
             type: AUTH_ERROR
         });
     }
 };
 
-// Register User
+// zaregistrovat
 export const register = formData => async dispatch => {
     try {
         const res = await api.post('/users', formData);
@@ -48,3 +49,35 @@ export const register = formData => async dispatch => {
         });
     }
 };
+
+// Přihlásit
+export const login = (email, password) => async dispatch => {
+    const body = { email, password };
+
+    try {
+        const res = await api.post('/auth', body);
+
+        dispatch({
+            type: LOGIN_SUCCESS,
+            payload: res.data
+        });
+
+        dispatch(loadUser());
+    } catch (error) {
+        const errors = error.response.data.errors;
+
+        if (errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        }
+
+        dispatch({
+            type: LOGIN_FAIL
+        });
+    }
+};
+
+// Odhlásit
+export const logout = () => dispatch => {
+    dispatch({ type: CLEAR_PROFILE });
+    dispatch({ type: LOGOUT });
+}

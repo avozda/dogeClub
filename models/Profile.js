@@ -1,31 +1,26 @@
 const mongoose = require("mongoose");
 
+
+//Model k uložení a prácí s profily v databázi
+
 const ProfileSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
     },
-    company: {
+    website: {
         type: String
     },
-    website: {
+    name: {
         type: String
     },
     location: {
         type: String
     },
-    status: {
-        type: String,
-        required: true
-    },
-    skills: {
-        type: [String],
-        required: true
-    },
     bio: {
         type: String
     },
-    githubusername: {
+    avatar: {
         type: String
     },
     experience: [{
@@ -85,6 +80,9 @@ const ProfileSchema = new mongoose.Schema({
     }],
     social: {
         youtube: {
+            type: String
+        },
+        githubusername: {
             type: String
         },
         twitter: {

@@ -3,12 +3,12 @@ const router = express.Router();
 const auth = require("../../middleware/auth")
 const Profile = require("../../models/Profile")
 const User = require("../../models/User")
+const Post = require("../../models/Post")
 const { check, validationResult } = require("express-validator");
-const request = require("request");
 const config = require("config");
 
 //@route    GET api/profile/me
-//@desc     get current users profile
+//@desc     najít uživatelův profil
 //@access   Private
 router.get("/me", auth, async(req, res) => {
     try {
@@ -24,52 +24,39 @@ router.get("/me", auth, async(req, res) => {
 })
 
 //@route    POST api/profile
-//@desc     create or update profile
+//@desc     vytvořit/updatovat profil
 //@access   Private
 
-router.post("/", [auth, [
-    check("status", "Status is required").not().isEmpty(),
-    check("skills", "Skills is required").not().isEmpty()
-]], async(req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
+router.post("/", auth, async(req, res) => {
 
-
-    const {
-        company,
+    console.log(req.body)
+    let {
         website,
-        location,
-        bio,
-        status,
-        githubusername,
-        skills,
         youtube,
-        facebook,
         twitter,
         instagram,
-        linkedin
+        linkedin,
+        facebook,
+        avatar,
+        githubusername,
+        ...rest
     } = req.body;
 
-    const profileFields = {};
-    profileFields.user = req.user.id;
-    if (company) profileFields.company = company;
-    if (website) profileFields.website = website;
-    if (location) profileFields.location = location;
-    if (bio) profileFields.bio = bio;
-    if (status) profileFields.status = status;
-    if (githubusername) profileFields.githubusername = githubusername;
-    if (skills) {
-        profileFields.skills = skills.split(",").map(skill => skill.trim());
+
+    if (avatar === "") {
+        avatar = "https://avatars.githubusercontent.com/u/36159327?s=200&v=4"
     }
 
-    profileFields.social = {}
-    if (youtube) profileFields.social.youtube = youtube;
-    if (twitter) profileFields.social.twitter = twitter;
-    if (facebook) profileFields.social.facebook = facebook;
-    if (linkedin) profileFields.social.linkedin = linkedin;
-    if (instagram) profileFields.social.instagram = instagram;
+
+    const profileFields = {
+        user: req.user.id,
+        website: website && website,
+        avatar: avatar,
+        ...rest
+    };
+
+    const socialFields = { youtube, twitter, instagram, linkedin, facebook, githubusername };
+    profileFields.social = socialFields;
 
     try {
         let profile = await Profile.findOne({ user: req.user.id });
@@ -88,7 +75,7 @@ router.post("/", [auth, [
 });
 
 //@route    GET api/profile
-//@desc     get all profiles
+//@desc     najít všechny profily
 //@access   Public
 
 router.get("/", async(req, res) => {
@@ -102,7 +89,7 @@ router.get("/", async(req, res) => {
 });
 
 //@route    GET api/profile/user/:id
-//@desc     get profile by id
+//@desc     najít profil podle id
 //@access   Public
 router.get("/user/:user_id", async(req, res) => {
     try {
@@ -118,12 +105,12 @@ router.get("/user/:user_id", async(req, res) => {
 });
 
 //@route    DELETE api/profile 
-//@desc     delete profile, user, posts
+//@desc     smazat profil
 //@access   Private
 
 router.delete("/", auth, async(req, res) => {
     try {
-
+        await Post.deleteMany({ user: req.user.id })
         await Profile.findOneAndRemove({ user: req.user.id });
         await User.findOneAndRemove({ _id: req.user.id });
 
@@ -135,7 +122,7 @@ router.delete("/", auth, async(req, res) => {
 });
 
 //@route    PUT api/profile/experience
-//@desc     add profile experience
+//@desc     přidat zkušenost
 //@access   Private
 
 router.put("/experience", [auth, [
@@ -166,7 +153,7 @@ router.put("/experience", [auth, [
 });
 
 //@route    DELETE api/profile/experience/:exp_id
-//@desc     delete experience from profile
+//@desc     smazat zkušenost
 //@access   Private
 
 router.delete("/experience/:exp_id", auth, async(req, res) => {
@@ -184,7 +171,7 @@ router.delete("/experience/:exp_id", auth, async(req, res) => {
 });
 
 //@route    PUT api/profile/education
-//@desc     add profile education
+//@desc     přidat školu
 //@access   Private
 
 router.put("/education", [auth, [
@@ -216,7 +203,7 @@ router.put("/education", [auth, [
 });
 
 //@route    DELETE api/profile/education/:edu_id
-//@desc     delete education from profile
+//@desc     smazat školu
 //@access   Private
 
 router.delete("/education/:edu_id", auth, async(req, res) => {
@@ -232,34 +219,5 @@ router.delete("/education/:edu_id", auth, async(req, res) => {
         res.status(500).send("Server Error");
     }
 });
-
-//@route    GET api/profile/github/:username
-//@desc     get user repos
-//@access   Private
-
-router.get("/github/:username", async(req, res) => {
-    try {
-        const options = {
-            uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&
-            sort=created:asc&client_id=${config.get("githubClientId")}&client_secret=${config.get("githubSecret")}`,
-            method: "GET",
-            headers: { "user-agent": "node.js" }
-        };
-
-        request(options, (error, response, body) => {
-            if (error) {
-                console.error(error)
-            }
-            if (response.statusCode !== 200) {
-                res.status(404).json({ msg: "No github profile found" });
-            }
-            res.json(JSON.parse(body));
-        })
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).send("Server Error");
-    }
-})
-
 
 module.exports = router;

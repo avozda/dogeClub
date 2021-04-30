@@ -9,20 +9,20 @@ const { check, validationResult } = require('express-validator');
 const User = require('../../models/User');
 
 // @route    GET api/auth
-// @desc     Get user by token
+// @desc     Najít uživatele z tokenu
 // @access   Private
 router.get('/', auth, async(req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
         res.json(user);
-    } catch (err) {
-        console.error(err.message);
+    } catch (error) {
+        console.error(error.message);
         res.status(500).send('Server Error');
     }
 });
 
 // @route    POST api/auth
-// @desc     Authenticate user & get token
+// @desc     Ověřit uživatele a získát token
 // @access   Public
 router.post(
     '/',
@@ -67,8 +67,8 @@ router.post(
                     res.json({ token });
                 }
             );
-        } catch (err) {
-            console.error(err.message);
+        } catch (error) {
+            console.error(error.message);
             res.status(500).send('Server error');
         }
     }

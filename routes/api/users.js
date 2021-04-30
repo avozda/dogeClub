@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
@@ -9,7 +8,7 @@ const { check, validationResult } = require("express-validator");
 const User = require("../../models/User")
 
 //@route    POST api/users
-//@desc     Register user
+//@desc     Rageistrace
 //@access   Public
 router.post("/", [
     check("name", "Name is required").not().isEmpty(),
@@ -29,19 +28,10 @@ router.post("/", [
         if (user) {
             return res.status(400).json({ errors: [{ msg: "User already exists" }] })
         }
-
-
-        // gravatar
-        const avatar = gravatar.url(email, {
-            s: "200",
-            r: "pg",
-            d: "retro"
-        })
         user = new User({
                 name,
                 email,
-                password,
-                avatar
+                password
             })
             // encrypt heslo
         const salt = await bcrypt.genSalt(10);

@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+//Model k uložení a prácí s uživateli v databázi
+
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -14,9 +16,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    avatar: {
-        type: String
-    },
+
     date: {
         type: Date,
         default: Date.now
