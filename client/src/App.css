@@ -265,8 +265,6 @@ input#search::-webkit-search-cancel-button {
     border-radius: 10px;
 }
 
-.posts {}
-
 .post {
     border-radius: .5rem;
     background-color: var(--color-primary-800);
@@ -651,4 +649,30 @@ input[type="date"] {
 
 input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
+}
+
+.alert-container {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+}
+
+.alert {
+    color: var(--color-button-text);
+    border-radius: .5rem;
+    padding: 20px;
+    margin: 10px;
+    z-index: 2;
+}
+
+.alert-danger {
+    background-color: var(--color-accent);
+}
+
+.alert-success {
+    background-color: #4BB543;
+}
+
+.alert-warning {
+    background-color: #eed202;
 }

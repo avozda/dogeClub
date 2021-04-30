@@ -28,10 +28,10 @@ const Main = ({auth,getCurrentProfile, profile:{profile}}) => {
                      </div>
                   </Link>
                   
-               </div>):(<Link to="/create-profile"><div className="no-profile"><h4>You have not created a profile yet</h4></div></Link>)}
+               </div>):(<Link to="/create-profile"><div className="no-profile"><h4>Create a profile</h4></div></Link>)}
             
             </div>
-            <div className="column"><Posts/></div>
+            <div className="column"><Posts profile={profile}/></div>
             <div className="column">
                
             </div>

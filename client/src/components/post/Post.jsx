@@ -33,7 +33,7 @@ const Post = ({ getPost, getCurrentProfile, post: { post, loading }, match, prof
                      </div>
                   </Link>
                   
-               </div>):(<Link to="/create-profile"><div className="no-profile"><h4>You have not created a profile yet</h4></div></Link>)}
+               </div>):(<Link to="/create-profile"><div className="no-profile"><h4>Create a profile</h4></div></Link>)}
             </div>
             <div className="column">
             <PostItem showActions={false} post={post}/>

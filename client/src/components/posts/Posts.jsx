@@ -2,10 +2,12 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getPosts } from '../../actions/post';
+import {setAlert} from "../../actions/alert"
 import Spinner from "../layout/Spinner"
 import PostItem from "./PostItem"
 import PostForm from "./PostForm"
-const Posts = ({ getPosts, post: { posts, loading }, filter, profile:{profile} }) => {
+
+const Posts = ({ getPosts, post: { posts, loading }, filter, profile, setAlert }) => {
    useEffect(()=>{
       getPosts();
    }, [getPosts])
@@ -19,10 +21,13 @@ const Posts = ({ getPosts, post: { posts, loading }, filter, profile:{profile} }
          ):(
             <div className="flex-between">
             <h1 className="text-primary">Newsfeed</h1>
-            <button className="btn" onClick={e =>{
-               if(!profile){
-                  toggleForm(!form)
-               }
+            <button className="btn" onClick={e =>{  
+              if(profile){
+               toggleForm(!form)
+              } else {
+               setAlert("You need to create a profile to post", "warning")
+              }
+                  
             }}>Add post</button>
             </div>
          )
@@ -44,14 +49,13 @@ const Posts = ({ getPosts, post: { posts, loading }, filter, profile:{profile} }
 
 Posts.propTypes = {
    getPosts: PropTypes.func.isRequired,
+   setAlert: PropTypes.func.isRequired,
    post: PropTypes.object.isRequired,
    profile: PropTypes.object.isRequired,
  };
  
  const mapStateToProps = (state) => ({
-   post: state.post,
-   profile: state.post,
-
+   post: state.post
  });
  
- export default connect(mapStateToProps, { getPosts })(Posts);
+ export default connect(mapStateToProps, { getPosts, setAlert })(Posts);

@@ -6,6 +6,7 @@ import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 import logo from "../../img/dogeLogo.svg"
 
+
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
