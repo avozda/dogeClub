@@ -78,7 +78,7 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth,post:{pos
                 }
               </div>
               </div>
-              <div className="column"><Posts filter={match.params.id}/></div>
+              <div className="column users-posts"><Posts filter={match.params.id}/></div>
           </div>    
         </div>
         </Fragment>

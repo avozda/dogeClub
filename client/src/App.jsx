@@ -1,4 +1,5 @@
 import './App.css';
+import "./Responsive.css"
 import {Fragment, useEffect} from "react";
 import Login from "./components/pages/Login"
 import Register from "./components/pages/Register"
