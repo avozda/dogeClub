@@ -6,7 +6,7 @@ import { logout } from '../../actions/auth';
 import { getProfiles } from '../../actions/profile';
 
 import logo from "../../img/dogeLogo.svg"
-const Navbar = ({ logout, getProfiles, history, auth }) => {
+const Navbar = ({ logout, getProfiles, history, auth, profile }) => {
 
   const [search, setSearch] = useState('');
   
@@ -60,11 +60,10 @@ const Navbar = ({ logout, getProfiles, history, auth }) => {
 
     <nav className="bottom-nav">
     <ul className="bottom-menu py-1">  
-    <Link to={`/profile/${auth.user._id}`}>
+
+    <Link to={`${profile.profile ? (`/profile/${auth.user._id}`) : ("/create-profile")}`}>
     <li>
-        
-        <i className="fas fa-user fa-2x"></i>
-        
+        <i className="fas fa-user fa-2x"></i> 
       </li>
       </Link>
       <a onClick={logout} href="#!">
@@ -87,7 +86,8 @@ Navbar.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  profile:state.profile
 });
 
 export default connect(mapStateToProps, { logout, getProfiles })(withRouter(Navbar));
