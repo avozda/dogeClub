@@ -119,7 +119,7 @@ const {
         </div>
         <div className="form-group">
         <i className="fas create-icon fa-question"></i>
-          <textarea placeholder="A short bio of yourself" name="bio" maxlength="100" value={bio} onChange={onChange}></textarea>
+          <textarea placeholder="A short bio of yourself" name="bio" maxlength="150" value={bio} onChange={onChange}></textarea>
         </div>
 
         <div className="my-2">

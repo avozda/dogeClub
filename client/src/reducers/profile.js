@@ -27,7 +27,7 @@ function profileReducer(state = initialState, action) {
         case GET_PROFILES:
             return {
                 ...state,
-                profiles: payload.profiles.filter(profile => profile.name.includes(payload.search)),
+                profiles: payload.profiles.filter(profile => profile.name.toLowerCase().includes(payload.search.toLowerCase())),
                 loading: false
             };
         case PROFILE_ERROR:
