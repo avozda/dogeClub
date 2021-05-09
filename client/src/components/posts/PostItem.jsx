@@ -31,7 +31,7 @@ const PostItem = ({addLike,removeLike,deletePost,addDislike,removeDislike,auth,s
           <Link to={`/profile/${user}`}>
           <h4>{name}</h4>
           </Link>
-          <p className="post-date">Posted on {formatDate(date)}</p>
+          <p className="post-date" >Posted on {formatDate(date)}</p>
           </div>
           {!auth.loading && user === auth.user._id && (
               <button
@@ -46,7 +46,7 @@ const PostItem = ({addLike,removeLike,deletePost,addDislike,removeDislike,auth,s
       </div>
       <div>
         
-         <div className="px-1 m-bottom"><p>{text}</p></div>
+         <div className="px-1 m-bottom"><p >{text}</p></div>
         
         <img src={picture} className="post-picture" alt=""/>
           <div className="reactions">

@@ -24,6 +24,7 @@ const PostForm = ({addPost}) => {
             cols="30"
             rows="5"
             placeholder="Say Something..."
+            maxlength="200"
             value={text}
             onChange={e=> setText(e.target.value)}
             required

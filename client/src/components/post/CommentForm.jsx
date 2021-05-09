@@ -22,6 +22,7 @@ const CommentForm = ({ postId, addComment, profile:{profile} }) => {
           cols='30'
           rows='1'
           placeholder='Comment the post'
+          maxlength="200"
           value={text}
           onChange={e => setText(e.target.value)}
           required

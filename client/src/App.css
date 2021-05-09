@@ -270,10 +270,15 @@ input#search::-webkit-search-cancel-button {
 }
 
 .post {
+    max-width: 80vw;
     border-radius: .5rem;
     background-color: var(--color-primary-800);
     margin-top: 20px;
     position: relative;
+}
+
+.post p {
+    word-break: break-all;
 }
 
 .delete-post {
