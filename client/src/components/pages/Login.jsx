@@ -57,7 +57,6 @@ const Login = ({ login, isAuthenticated }) => {
             minLength="6"
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Login" />
         <button type="submit" className="btn btn-primary">Login</button>
       </form>
       <p className="my-1">
