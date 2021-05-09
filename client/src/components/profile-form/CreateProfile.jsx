@@ -104,22 +104,22 @@ const {
         </div>
       <div className="form-group">
       <i className="fas create-icon fa-user"></i>
-          <input type="text" placeholder="Name" name="name" value={name} onChange={onChange} required />
+          <input type="text" placeholder="Name" name="name" value={name} maxlength="30" onChange={onChange} required />
         </div>
   
         
         <div className="form-group">
         <i className="fas create-icon fa-map-marker-alt"></i>
-          <input type="text" placeholder="Location" name="location" value={location} onChange={onChange}/>
+          <input type="text" placeholder="Location" name="location" maxlength="30" value={location} onChange={onChange}/>
           
         </div>
         <div className="form-group">
         <i className="fas create-icon fa-globe"></i>
-          <input type="text" placeholder="Website" name="website" value={website} onChange={onChange} />
+          <input type="text" placeholder="Website" name="website" maxlength="30" value={website} onChange={onChange} />
         </div>
         <div className="form-group">
         <i className="fas create-icon fa-question"></i>
-          <textarea placeholder="A short bio of yourself" name="bio" value={bio} onChange={onChange}></textarea>
+          <textarea placeholder="A short bio of yourself" name="bio" maxlength="100" value={bio} onChange={onChange}></textarea>
         </div>
 
         <div className="my-2">
@@ -131,31 +131,31 @@ const {
             {displaySocialInputs && <Fragment>
                <div className="form-group social-input">
           <i className="fab create-icon fa-twitter "></i>
-          <input type="text" placeholder="Twitter URL" name="twitter" value={twitter} onChange={onChange} />
+          <input type="text" placeholder="Twitter URL" maxlength="60"  name="twitter" value={twitter} onChange={onChange} />
         </div>
 
         <div className="form-group social-input">
           <i className="fab create-icon fa-facebook "></i>
-          <input type="text" placeholder="Facebook URL" name="facebook" value={facebook} onChange={onChange}/>
+          <input type="text" placeholder="Facebook URL" name="facebook" maxlength="60"  value={facebook} onChange={onChange}/>
         </div>
 
         <div className="form-group social-input">
           <i className="fab create-icon fa-youtube "></i>
-          <input type="text" placeholder="YouTube URL" name="youtube" value={youtube} onChange={onChange} />
+          <input type="text" placeholder="YouTube URL" name="youtube" maxlength="60"  value={youtube} onChange={onChange} />
         </div>
 
         <div className="form-group social-input">
           <i className="fab create-icon fa-linkedin "></i>
-          <input type="text" placeholder="Linkedin URL" name="linkedin" value={linkedin} onChange={onChange} />
+          <input type="text" placeholder="Linkedin URL" name="linkedin" maxlength="60"  value={linkedin} onChange={onChange} />
         </div>
 
         <div className="form-group social-input">
           <i className="fab create-icon fa-instagram "></i>
-          <input type="text" placeholder="Instagram URL" name="instagram" value={instagram} onChange={onChange}/>
+          <input type="text" placeholder="Instagram URL" name="instagram" maxlength="60"  value={instagram} onChange={onChange}/>
         </div>
         <div className="form-group social-input">
           <i className="fab create-icon fa-github "></i>
-          <input type="text" placeholder="Github URL" name="githubusername" value={githubusername} onChange={onChange}/>
+          <input type="text" placeholder="Github URL" name="githubusername" maxlength="60" value={githubusername} onChange={onChange}/>
         </div>
               
                </Fragment>}

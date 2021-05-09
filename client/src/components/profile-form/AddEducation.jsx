@@ -71,6 +71,7 @@ const AddEducation = ({addEducation,history}) => {
           <textarea
             name="description"
             placeholder="Program Description"
+            maxlength="200"
             value={description} onChange={onChange}
           ></textarea>
         </div>
