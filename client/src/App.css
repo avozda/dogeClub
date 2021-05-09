@@ -176,6 +176,7 @@ h1.logo-text {
 }
 
 input {
+    -webkit-appearance: none;
     border: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;

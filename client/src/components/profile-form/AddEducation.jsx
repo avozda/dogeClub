@@ -75,7 +75,8 @@ const AddEducation = ({addEducation,history}) => {
             value={description} onChange={onChange}
           ></textarea>
         </div>
-        <input type="submit" className="btn btn-primary my-1" value="Add Education" />
+   
+        <button type="submit" className="btn btn-primary my-1">Add Education</button>
       </form>
       </div>
       </div>

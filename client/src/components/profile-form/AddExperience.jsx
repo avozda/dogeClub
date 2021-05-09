@@ -82,7 +82,7 @@ const AddExperience = ({addExperience,history}) => {
             value={description} onChange={onChange}
           ></textarea>
         </div>
-        <input type="submit" className="btn btn-primary my-1" value="Add Experience" />
+        <button type="submit" className="btn btn-primary my-1">Edit Experience</button>
       </form>
       </div>
       </div>

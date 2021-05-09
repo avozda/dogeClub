@@ -174,7 +174,7 @@ const {
             
              </Fragment>}
       
-      <input type="submit" className="btn btn-primary my-1" value="Edit Profile"  />
+      <button type="submit" className="btn btn-primary my-1">Edit Profile</button>
     </form>
     </div>
     </div>
