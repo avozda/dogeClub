@@ -247,6 +247,10 @@ input#search::-webkit-search-cancel-button {
     justify-content: space-between;
     align-items: center;
     padding: 20px 3rem;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
     position: sticky;
     top: 0;
     background-color: var(--color-primary-900);

@@ -13,15 +13,15 @@ const EditProfile = ({profile:{profile,loading},createProfile, history, getCurre
 const [formData, setFormData] = useState({
   name:"",
   avatar:"",
-  website: '',
-  location: '',
-  githubusername: '',
-  bio: '',
-  twitter: '',
-  facebook: '',
-  linkedin: '',
-  youtube: '',
-  instagram: ''
+  website: "",
+  location: "",
+  githubusername: "",
+  bio: "",
+  twitter: "",
+  facebook: "",
+  linkedin: "",
+  youtube: "",
+  instagram: ""
 })
 
 
@@ -29,7 +29,7 @@ const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
 useEffect(()=> {
 
-   getCurrentProfile();
+  if (!profile) getCurrentProfile();
 
    setFormData({
       name: loading || !profile.name ? "" : profile.name,
@@ -68,7 +68,7 @@ const {
 
  const onSubmit = (e) => {
    e.preventDefault();
-  createProfile(formData, history);
+  createProfile(formData, history, true);
  }
 
    return (
