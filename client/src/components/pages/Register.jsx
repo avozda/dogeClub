@@ -47,6 +47,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             type="text"
             placeholder="Name"
             name="name"
+            maxLength="10"
             value={name}
             onChange={onChange}
           />

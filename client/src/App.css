@@ -166,6 +166,11 @@ h1.logo-text {
     padding: 0 20px;
 }
 
+.about-card p {
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+
 .large {
     font-size: 2rem;
 }
