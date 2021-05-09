@@ -8,11 +8,15 @@ const PostForm = ({addPost}) => {
    const [text, setText] = useState('');
     const [picture, setPicture] = useState("")
    const onSubmit = e =>{
+
       e.preventDefault();
+      
       addPost({text, picture});
       setText("")
       setPicture("")
    }
+   
+
    return (
       <div className="post-form">
         <div className="bg-primary p">
@@ -27,6 +31,7 @@ const PostForm = ({addPost}) => {
             maxlength="200"
             value={text}
             onChange={e=> setText(e.target.value)}
+          
             required
           ></textarea>
           {picture && <img src={picture} alt='' className='img-preview' width="50" height="200" />}

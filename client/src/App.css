@@ -270,7 +270,6 @@ input#search::-webkit-search-cancel-button {
 }
 
 .post {
-    max-width: 80vw;
     border-radius: .5rem;
     background-color: var(--color-primary-800);
     margin-top: 20px;
@@ -278,7 +277,9 @@ input#search::-webkit-search-cancel-button {
 }
 
 .post p {
-    word-break: break-all;
+    max-width: 40vw;
+    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 .delete-post {
