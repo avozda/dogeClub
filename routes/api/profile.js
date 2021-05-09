@@ -4,6 +4,7 @@ const auth = require("../../middleware/auth")
 const Profile = require("../../models/Profile")
 const User = require("../../models/User")
 const Post = require("../../models/Post")
+const normalize = require('normalize-url');
 const { check, validationResult } = require("express-validator");
 const config = require("config");
 
@@ -50,8 +51,7 @@ router.post("/", auth, async(req, res) => {
 
     const profileFields = {
         website: website && website !== '' ?
-            normalize(website, { forceHttps: true }) :
-            '',
+            normalize(website, { forceHttps: true }) : '',
         user: req.user.id,
         avatar: avatar,
         ...rest
