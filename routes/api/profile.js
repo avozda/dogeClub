@@ -49,8 +49,10 @@ router.post("/", auth, async(req, res) => {
 
 
     const profileFields = {
+        website: website && website !== '' ?
+            normalize(website, { forceHttps: true }) :
+            '',
         user: req.user.id,
-        website: website && website,
         avatar: avatar,
         ...rest
     };
