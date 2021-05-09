@@ -31,6 +31,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.5;
     background: var(--color-primary-900);
+    max-width: 100vw;
 }
 
 a {
@@ -48,7 +49,7 @@ p {
 }
 
 section {
-    width: 100vw;
+    max-width: 100vw;
 }
 
 h1 {
