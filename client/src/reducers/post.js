@@ -64,9 +64,6 @@ export default function(state = initialState, action) {
         case UPDATE_UPVOTES:
             return {
                 ...state,
-                posts: state.posts.map((post) =>
-                    post._id === payload.postId ? {...post, comments: post.comments.map(comment => comment._id === payload.commentId ? {...comment, upvotes: payload.upvotes } : comment) } : post
-                ).sort(sorter),
                 post: {...state.post, comments: state.post.comments.map(comment => comment._id === payload.commentId ? {...comment, upvotes: payload.upvotes } : comment).sort(sorter) },
                 loading: false
             }

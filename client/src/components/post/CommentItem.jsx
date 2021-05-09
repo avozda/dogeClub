@@ -27,7 +27,7 @@ const CommentItem = ({
     <Link to={`/profile/${user}`}>
     <h4 className="comment-name">{name}</h4>
     </Link>
-    <span className="post-date">Posted on {formatDate(date)}</span>
+    <span className="post-date">Commented on {formatDate(date)}</span>
       <p>{text}</p>
       
       <Fragment>
