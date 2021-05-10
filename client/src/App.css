@@ -286,6 +286,7 @@ input#search::-webkit-search-cancel-button {
     max-width: 40vw;
     overflow: hidden;
     overflow-wrap: break-word;
+    word-break: break-all;
 }
 
 .delete-post {
