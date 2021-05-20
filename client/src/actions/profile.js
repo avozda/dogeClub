@@ -13,6 +13,9 @@ import {
 // najít profil přihlášeného uživatele
 export const getCurrentProfile = () => async(dispatch) => {
     try {
+        dispatch({
+            type: CLEAR_PROFILE
+        });
         const res = await api.get('/profile/me');
 
         dispatch({
