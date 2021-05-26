@@ -29,8 +29,6 @@ router.get("/me", auth, async(req, res) => {
 //@access   Private
 
 router.post("/", auth, async(req, res) => {
-
-    console.log(req.body)
     let {
         website,
         youtube,

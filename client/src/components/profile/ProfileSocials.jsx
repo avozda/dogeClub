@@ -41,6 +41,11 @@ const ProfileSocials = ({
                 <i className="fab fa-instagram"></i>
               </a>)
              }
+              {
+                social && social.githubusername && (<a href={social.githubusername} target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-github"></i>
+              </a>)
+             }
           </div>
    )
 }
